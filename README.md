@@ -11,3 +11,8 @@ Aqui você encontrará **atividades desenvolvidas ao longo da graduação em Eng
 - **Python**
 - **SQL**
 - **C**
+---
+- `faculdade/` → Atividades e trabalhos realizados nas disciplinas do curso.  
+- `estudos-pessoais/` → Projetos e exercícios criados para reforçar ou explorar novos conteúdos.
+---
+✍️ *“Aprender é um processo contínuo. Este repositório é a prova do meu caminho de evolução na tecnologia.”*
