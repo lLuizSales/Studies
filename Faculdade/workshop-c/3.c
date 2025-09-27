@@ -2,9 +2,9 @@
 
 int main(){
 
-	char nome[];
+	char nome[20];
 	int idade;
-	char cidade[];
+	char cidade[20];
 
 	scanf("%s", nome);
 

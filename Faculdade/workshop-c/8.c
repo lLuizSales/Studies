@@ -15,15 +15,15 @@ int main(){
 
 	if( d < 5 ){
 
-		printf("Muito perto");
+		printf("Muito perto\n");
 
 	} else if (5 <= d && d <= 20){
 
-		printf("Distancia media");
+		printf("Distancia media\n");
 
 	} else {
 
-		printf("Muito longe");
+		printf("Muito longe\n");
 
 	} 
 

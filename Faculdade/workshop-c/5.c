@@ -10,14 +10,14 @@ int main(){
 
 	if (!strcmp(cor, "verde")){
 
-		printf("Acelere");
+		printf("Acelere\n");
 
 	} else if (!strcmp(cor, "amarelo")){
 
-		printf("Diminua a velocidade");
+		printf("Diminua a velocidade\n");
 
 	} else{
-		printf("Pare");
+		printf("Pare\n");
 	}
 
 

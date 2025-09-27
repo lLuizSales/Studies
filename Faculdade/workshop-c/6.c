@@ -8,15 +8,15 @@ int main(){
 
 	if(nota >= 55 && nota <= 60){
 
-		printf("Recuperacao");
+		printf("Recuperacao\n");
 
 	} else if (nota < 55){
 
-		printf("Reprovado");
+		printf("Reprovado\n");
 
 	} else {
 
-		printf("Aprovado");
+		printf("Aprovado\n");
 
 	}
 

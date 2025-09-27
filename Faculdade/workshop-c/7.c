@@ -13,11 +13,9 @@ int main(){
 
     delta = pow(b,2) - (4 * a *c);
 
-
-
     if(delta < 0){
 
-        printf("Raizes inexistentes");
+        printf("Raizes inexistentes\n");
 
     } else {
 
@@ -25,12 +23,10 @@ int main(){
         x2 = (float)(-b + sqrt(delta))/(2 * a);
 
         if (x1 < x2) {
-
             printf("x1 = %.2f\n", x2);
             printf("x2 = %.2f\n", x1);
 
         } else {
-
             printf("x1 = %.2f\n", x1);
             printf("x2 = %.2f\n", x2);
 
