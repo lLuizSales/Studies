@@ -1,12 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef _WIN32
+    #define LIMPAR_TELA "cls"
+#else
+    #define LIMPAR_TELA "clear"
+#endif
+
 typedef struct {
-    char nome_c[100];
-    float sal_c, val_e, parc_m, porc_sal, parcela, porcentagem_sal;
-    int mes_q;
-} dados;
+
+    char nome[100];
+    float salario, valor, parcela_c, porcentagem_c;
+    int mes_quitacao;
+
+} Cliente;
+
+typedef struct {
+    
+    float parcela, porcentagem, parcela_e, porcentagem_e;
+
+} Emprestimo;
 
 void limpar_buffer();
 
-void calcs(dados *d);
+void calcs(Cliente *cli);

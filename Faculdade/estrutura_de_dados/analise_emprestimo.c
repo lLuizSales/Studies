@@ -5,10 +5,12 @@ void limpar_buffer(){
     while((c = getchar()) != '\n' && c != EOF);
 }
 
-void calcs(dados *d){
-    float parcela = d->val_e / d->mes_q;
-    float porcentagem_sal = d->sal_c * 0.20;
+void calcs(Cliente *cli){
 
-    d->parcela = parcela;
-    d->porcentagem_sal = porcentagem_sal;
+    float parcela_e = cli->valor / cli->mes_quitacao;
+    float porcentagem_e = cli->salario * 0.20;
+
+    cli->parcela_c = parcela_e;
+    cli->porcentagem_c = porcentagem_e;
+
 }

@@ -1,7 +1,8 @@
 #include "analise_emprestimo.c"
 
 void main(){
-    dados dados_c;
+
+    Cliente cliente;
     int opcao = 0;  
   
     do{
@@ -15,29 +16,33 @@ void main(){
         limpar_buffer();
 
     if(opcao == 1) {
+        system(LIMPAR_TELA);
         printf("\n\nNome do Cliente: ");
-        scanf("%[^\n]", dados_c.nome_c);
+        scanf("%[^\n]", cliente.nome);
         limpar_buffer();
         printf("Salário do Cliente: ");
-        scanf("%f", &dados_c.sal_c);
+        scanf("%f", &cliente.salario);
         printf("Valor do Empréstimo: ");
-        scanf("%f", &dados_c.val_e);
+        scanf("%f", &cliente.valor);
         printf("Meses para quitação: ");
-        scanf("%d", &dados_c.mes_q);
+        scanf("%d", &cliente.mes_quitacao);
 
-    calcs(&dados_c);
+    calcs(&cliente);
 
 
-    if(dados_c.parcela <= dados_c.porcentagem_sal){
-        printf("Nome: %s\nSalário: R$ %.2f\nValor Empréstimo: R$ %.2f\nMeses para Quitação: %d\nValor máximo da parcela (20%% do salário): R$ %.2f\nValor da Parcela: R$ %.2f\nSituação do empréstimo: Aprovado\n", 
-            dados_c.nome_c, dados_c.sal_c, dados_c.val_e, dados_c.mes_q, dados_c.porcentagem_sal, dados_c.parcela );
+    if(cliente.parcela_c <= cliente.porcentagem_c){
+        system(LIMPAR_TELA);
+        printf("\nNome: %s\nSalário: R$ %.2f\nValor Empréstimo: R$ %.2f\nMeses para Quitação: %d\nValor máximo da parcela (20%% do salário): R$ %.2f\nValor da Parcela: R$ %.2f\nSituação do empréstimo: Aprovado\n", 
+            cliente.nome, cliente.salario, cliente.valor, cliente.mes_quitacao, cliente.porcentagem_c, cliente.parcela_c);
     } else {
-        printf("Nome: %s\nSalário: R$ %.2f\nValor Empréstimo: R$ %.2f\nMeses para Quitação: %d\nValor máximo da parcela (20%% do salário): R$ %.2f\nValor da Parcela: R$ %.2f\nSituação do empréstimo: Reprovado\n", 
-            dados_c.nome_c, dados_c.sal_c, dados_c.val_e, dados_c.mes_q, dados_c.porcentagem_sal, dados_c.parcela );
+        system(LIMPAR_TELA);
+        printf("\nNome: %s\nSalário: R$ %.2f\nValor Empréstimo: R$ %.2f\nMeses para Quitação: %d\nValor máximo da parcela (20%% do salário): R$ %.2f\nValor da Parcela: R$ %.2f\nSituação do empréstimo: Reprovado\n", 
+            cliente.nome, cliente.salario, cliente.valor, cliente.mes_quitacao, cliente.porcentagem_c, cliente.parcela_c);
              
     }
-    } else if (opcao != 2) { 
-        printf("Opção inexistente!");
+    } else if (opcao != 2) {
+        system(LIMPAR_TELA); 
+        printf("Opção inexistente!\n");
     }
 
 } while (opcao != 2);
