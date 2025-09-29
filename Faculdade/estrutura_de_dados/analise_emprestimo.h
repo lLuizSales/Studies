@@ -7,20 +7,26 @@
     #define LIMPAR_TELA "clear"
 #endif
 
-typedef struct {
-
-    char nome[100];
-    float salario, valor, parcela_c, porcentagem_c;
-    int mes_quitacao;
-
-} Cliente;
 
 typedef struct {
     
-    float parcela, porcentagem, parcela_e, porcentagem_e;
+    float valor, parcela, maximo_parcela;
+    int mes_quitacao, status;
 
 } Emprestimo;
 
+typedef struct {
+
+    char nome[100];
+    float salario;
+
+} Cliente;
+
+
 void limpar_buffer();
 
-void calcs(Cliente *cli);
+void analise(Cliente *p_cli, Emprestimo *p_emp);
+
+void resultado(Cliente *p_cli, Emprestimo *p_emp);
+
+void apresentacao();
