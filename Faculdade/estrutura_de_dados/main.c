@@ -54,7 +54,7 @@ void main(){
 
     }
 
-} while (opcao != 2);
+    } while (opcao != 2);
 
     system(LIMPAR_TELA);
     printf("\nSaindo do programa...\n\n");
