@@ -4,7 +4,7 @@ int main(){
 
     int n, soma = 0;
 
-    scanf("%d", &n);
+    scanf("%d\n", &n);
 
     for(int i = 0; i < n; i++){
         
