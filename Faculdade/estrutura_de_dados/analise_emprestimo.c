@@ -57,5 +57,25 @@ void resultado(Cliente *p_cli, Emprestimo *p_emp){
         printf("Situação do empréstimo: Reprovado\n");
 
     }
+}
+
+void imprimirSimulacoes(Cliente *p_cli, Emprestimo *p_emp, int total){
+
+    system(LIMPAR_TELA);
+    printf("-------Histórico de análises-----\n");
+
+    if(total == 0){
+
+        printf("Nenhuma análise realizada.\n");
+
+    } else{
+
+        for(int i; i < total; i++){
+        
+            printf("")
+
+        }
+    }
+
 
 }
