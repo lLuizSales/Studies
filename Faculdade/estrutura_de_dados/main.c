@@ -5,7 +5,7 @@ void main(){
     Cliente *p_cliente = (Cliente *) calloc(1, sizeof(Cliente));
     Emprestimo *p_emprestimo = (Emprestimo *) calloc(1, sizeof(Emprestimo));
 
-    int opcao = 0;
+    int opcao = 0;  
     int total_simulacoes = 0;
   
     do{
@@ -20,7 +20,7 @@ void main(){
         scanf("%d", &opcao);
         limpar_buffer();
 
-        if(opcao == 1) {
+        if(opcao == 1){
 
             total_simulacoes++;
 
@@ -55,7 +55,7 @@ void main(){
             
         } else if( opcao == 2){
 
-        }else if (opcao != 3) {
+        } else if(opcao != 3){
 
             system(LIMPAR_TELA); 
             printf("Opção inexistente!\n");
@@ -69,7 +69,7 @@ void main(){
 
     } while (opcao != 3);
 
-    system(LIMPAR_TELA);
-    printf("\nSaindo do programa...\n\n");
+        system(LIMPAR_TELA);
+        printf("\nSaindo do programa...\n\n");
 
 }
