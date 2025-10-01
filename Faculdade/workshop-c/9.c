@@ -25,7 +25,7 @@ int main(){
             break;
 
         default : 
-            puts("Opção inválida!");
+            puts("Numero invalido");
     }
 
     return 0;
