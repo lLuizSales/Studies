@@ -2,9 +2,13 @@
 
 int main(){
 
-    int n, N;
+    int n, N = 0;
 
-    while(scanf("%d\n", &n) && n != 0){
+    while(1){
+
+        scanf("%d", &n);
+
+        if(n == 0) break;
 
         if(n % 3 == 0) {
 
@@ -14,7 +18,7 @@ int main(){
 
     }
 
-    printf("%d\n", &N);
+    printf("%d\n", N);
     
     return 0;
 }
