@@ -66,14 +66,24 @@ void imprimirSimulacoes(Cliente *p_cli, Emprestimo *p_emp, int total){
 
     if(total == 0){
 
-        printf("Nenhuma análise realizada.\n");
+        printf("\n\nNenhuma análise realizada.\n");
 
     } else{
 
         for(int i; i < total; i++){
         
-            printf("")
+            printf("\n-----Análise %d -----\n", i + 1);
+            printf("Nome: %s\n", p_cli[i].nome);
 
+            if(p_emp[i].status == 1){
+
+                printf("Situação do empréstimo: Aprovado\n");
+    
+            } else{
+
+                printf("Situação do empréstimo: Reprovado\n");
+
+            }
         }
     }
 

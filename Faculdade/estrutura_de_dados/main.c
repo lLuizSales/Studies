@@ -55,7 +55,16 @@ void main(){
             
         } else if( opcao == 2){
 
-        } else if(opcao != 3){
+            system(LIMPAR_TELA);
+
+            imprimirSimulacoes(p_cliente, p_emprestimo, total_simulacoes);
+            
+            printf("\nPressione <ENTER> para voltar ao menu principal.");
+            getchar();
+
+            system(LIMPAR_TELA);
+
+        } else if (opcao != 3){
 
             system(LIMPAR_TELA); 
             printf("Opção inexistente!\n");

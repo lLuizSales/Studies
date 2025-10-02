@@ -29,4 +29,6 @@ void analise(Cliente *p_cli, Emprestimo *p_emp);
 
 void resultado(Cliente *p_cli, Emprestimo *p_emp);
 
+void imprimirSimulacoes(Cliente *p_cli, Emprestimo *p_emp, int total);
+
 void apresentacao();
