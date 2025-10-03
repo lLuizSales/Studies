@@ -43,13 +43,12 @@ void contaFrequencia(int n, int array[]){
 int main() {
     int n;
     
-    // leitura de n
+
     scanf("%d", &n);
 
-    // declaração do array
+
     int array[n];
 
-    // leitura dos elementos
     for(int i = 0; i < n; i++){
         
         scanf("%d", &array[i]);
