@@ -21,16 +21,19 @@ void main(){
 
     }
 
-    int posição;
+    int id, posicao, idade;
+    char nome[50];
+
 
     printf("Posição: ");
-    scanf("%d", &posição);
+    scanf("%d", &posicao);
     printf("Nome: ");
-    scanf("%s", N->nome);
+    scanf("%s", nome);
     printf("Idade: ");
-    scanf("%d", &N->idade);
+    scanf("%d", &idade);
     printf("ID: ");
-    scanf("%d", &N->id);
+    scanf("%d", &id);
     
+    cadastrarUsuario(N, posicao, id, nome, idade);
 
 }
