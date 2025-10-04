@@ -13,4 +13,8 @@ void main(){
     printf("Enderero de n: %p\n", &n);
     printf("Valor de n acessado por ponteiro: %d\n", *p_n);
     
+
+    *p_n = 100;
+
+    printf("Valor de n: %d\n", n);
 }
