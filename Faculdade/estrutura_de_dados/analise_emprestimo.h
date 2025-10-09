@@ -38,6 +38,8 @@ Lista *criarLista();
 
 void limpar_buffer();
 
+int inserirInicio(Lista *li, Cliente novo_cli, Emprestimo novo_emp);
+
 int inserirFinal(Lista *li, Cliente novo_cli, Emprestimo novo_emp);
 
 void analise(Cliente *p_cli, Emprestimo *p_emp);

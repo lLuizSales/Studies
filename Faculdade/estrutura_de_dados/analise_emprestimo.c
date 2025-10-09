@@ -57,6 +57,80 @@ int inserirFinal(Lista *li, Cliente novo_cli, Emprestimo novo_emp){
     return 1;
 }
 
+int inserirInicio(Lista *li, Cliente novo_cli, Emprestimo novo_emp){
+
+    Elemento *novo = (Elemento *)malloc(sizeof(Elemento));
+
+    if(novo == NULL){
+
+        return 0;
+    
+    }
+
+    novo->cli_dados = novo_cli;
+    novo->emp_dados = novo_emp;
+    novo->prox = *li;
+
+    (*li) = novo;
+
+    return 1;
+
+}
+
+
+int excluirFinal(Lista *li){
+
+    if((*li) == NULL){
+
+        return 0;
+
+    }
+
+    if((*li)->prox == NULL){
+
+        free(*li);
+        *li =  NULL;
+        return 1;
+
+    }
+
+    Elemento *anterior = *li;
+    Elemento *atual = (*li)->prox;
+
+    while(atual->prox != NULL){
+
+        anterior = atual;
+        atual = atual->prox;
+
+    }
+
+    anterior->prox = NULL;
+
+    free(atual);
+
+    return 1;
+    
+}
+
+int excluirInicio(Lista *li){
+
+
+    if((*li) == NULL){
+
+        return 0;
+    
+    }
+
+    Elemento *anterior = (*li);
+    
+    (*li) = anterior->prox;
+
+    free(anterior);
+
+    return 1;
+
+}
+
 void analise(Cliente *p_cli, Emprestimo *p_emp){
 
     p_emp->maximo_parcela = p_cli->salario * 0.20;
