@@ -15,6 +15,8 @@ typedef struct {
 
 } Emprestimo;
 
+
+
 typedef struct {
 
     char nome[100];
@@ -22,13 +24,26 @@ typedef struct {
 
 } Cliente;
 
+typedef struct Elemento {
+
+    Emprestimo emp_dados;
+    Cliente cli_dados;
+    struct Elemento *prox;
+
+} Elemento;
+
+typedef Elemento *Lista;
+
+Lista *criarLista();
 
 void limpar_buffer();
+
+int inserirFinal(Lista *li, Cliente novo_cli, Emprestimo novo_emp);
 
 void analise(Cliente *p_cli, Emprestimo *p_emp);
 
 void resultado(Cliente *p_cli, Emprestimo *p_emp);
 
-void imprimirSimulacoes(Cliente *p_cli, Emprestimo *p_emp, int total);
+void imprimirSimulacoes(Lista *li);
 
 void apresentacao();

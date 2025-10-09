@@ -1,14 +1,12 @@
 #include "analise_emprestimo.c"
 
-void main(){
+int main() {
 
-    Cliente *p_cliente = (Cliente *) calloc(1, sizeof(Cliente));
-    Emprestimo *p_emprestimo = (Emprestimo *) calloc(1, sizeof(Emprestimo));
-
-    int opcao = 0;  
-    int total_simulacoes = 0;
+    Lista *li = criarLista();
   
-    do{
+    int opcao = 0;
+
+    do {
         apresentacao();
         printf("\n\nMenu:\n");
         printf("------------------------------------\n");
@@ -22,31 +20,26 @@ void main(){
 
         if(opcao == 1){
 
-            total_simulacoes++;
-
-            Cliente *cliente = realloc(p_cliente, total_simulacoes * sizeof(Cliente));
-            Emprestimo *emprestimo = realloc(p_emprestimo, total_simulacoes * sizeof(Emprestimo));
-
-            p_cliente = cliente;
-            p_emprestimo = emprestimo;
-
-            int n = total_simulacoes - 1;
+            Cliente novo_cli;
+            Emprestimo novo_emp;
 
             system(LIMPAR_TELA);
             printf("\n\nNome do Cliente: ");
-            scanf("%[^\n]", p_cliente[n].nome);
+            scanf("%[^\n]", novo_cli.nome);
             limpar_buffer();
             printf("Salário do Cliente: ");
-            scanf("%f", &p_cliente[n].salario);
+            scanf("%f", &novo_cli.salario);
             printf("Valor do Empréstimo: ");
-            scanf("%f", &p_emprestimo[n].valor);
+            scanf("%f", &novo_emp.valor);
             printf("Meses para quitação: ");
-            scanf("%d", &p_emprestimo[n].mes_quitacao);
+            scanf("%d", &novo_emp.mes_quitacao);
             limpar_buffer();
-        
-            analise(&p_cliente[n], &p_emprestimo[n]);
 
-            resultado(&p_cliente[n], &p_emprestimo[n]);
+            analise(&novo_cli, &novo_emp);
+
+            resultado(&novo_cli, &novo_emp);
+
+            inserirFinal(li, novo_cli, novo_emp);
             
             printf("\nPressione <ENTER> para voltar ao menu principal.");
             getchar();
@@ -57,7 +50,7 @@ void main(){
 
             system(LIMPAR_TELA);
 
-            imprimirSimulacoes(p_cliente, p_emprestimo, total_simulacoes);
+            imprimirSimulacoes(li);
             
             printf("\nPressione <ENTER> para voltar ao menu principal.");
             getchar();
@@ -78,7 +71,12 @@ void main(){
 
     } while (opcao != 3);
 
-        system(LIMPAR_TELA);
-        printf("\nSaindo do programa...\n\n");
+    free(li);    
+    
+    system(LIMPAR_TELA);
+    printf("\nSaindo do programa...\n\n");
+
+
+    return 0;
 
 }

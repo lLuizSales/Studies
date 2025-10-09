@@ -12,6 +12,51 @@ void apresentacao(){
 
 }
 
+Lista *criarLista(){
+    Lista *li = (Lista *)malloc(sizeof(Lista));
+
+    if(li != NULL){
+        *li = NULL;
+    }
+
+    return li;
+}
+
+int inserirFinal(Lista *li, Cliente novo_cli, Emprestimo novo_emp){
+
+    Elemento *novo = (Elemento *)malloc(sizeof(Elemento));
+
+    if(novo == NULL){
+
+        return 0;
+    
+    }
+
+    novo->cli_dados = novo_cli;
+    novo->emp_dados = novo_emp;
+    novo->prox = NULL;
+
+    if ((*li) == NULL) {
+    
+        *li = novo;
+        
+        return 1;
+    
+    }
+
+    Elemento *atual = *li;
+
+    while (atual->prox != NULL){
+
+        atual = atual->prox;
+
+    }
+
+
+    atual->prox = novo;
+    return 1;
+}
+
 void analise(Cliente *p_cli, Emprestimo *p_emp){
 
     p_emp->maximo_parcela = p_cli->salario * 0.20;
@@ -59,33 +104,37 @@ void resultado(Cliente *p_cli, Emprestimo *p_emp){
     }
 }
 
-void imprimirSimulacoes(Cliente *p_cli, Emprestimo *p_emp, int total){
+void imprimirSimulacoes(Lista *li){
 
     system(LIMPAR_TELA);
     printf("-------Histórico de análises-----\n");
 
-    if(total == 0){
+    if((*li) == NULL){
 
         printf("\n\nNenhuma análise realizada.\n");
 
-    } else{
-
-        for(int i; i < total; i++){
-        
-            printf("\n-----Análise %d -----\n", i + 1);
-            printf("Nome: %s\n", p_cli[i].nome);
-
-            if(p_emp[i].status == 1){
-
-                printf("Situação do empréstimo: Aprovado\n");
-    
-            } else{
-
-                printf("Situação do empréstimo: Reprovado\n");
-
-            }
-        }
     }
 
+    Elemento *atual = *li;
+    int i = 1;
+
+    while(atual != NULL){
+        
+        printf("\n-----Análise %d -----\n", i++);
+        printf("Nome: %s\n", atual->cli_dados.nome);
+
+        if(atual->emp_dados.status == 1){
+
+            printf("Situação do empréstimo: Aprovado\n");
+    
+        } else{
+
+            printf("Situação do empréstimo: Reprovado\n");
+
+        }
+
+        atual = atual->prox;
+
+    }
 
 }
