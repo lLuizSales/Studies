@@ -42,6 +42,10 @@ int inserirInicio(Lista *li, Cliente novo_cli, Emprestimo novo_emp);
 
 int inserirFinal(Lista *li, Cliente novo_cli, Emprestimo novo_emp);
 
+int excluirInicio(Lista *li);
+
+int excluirFinal(Lista *li); 
+
 void analise(Cliente *p_cli, Emprestimo *p_emp);
 
 void resultado(Cliente *p_cli, Emprestimo *p_emp);
