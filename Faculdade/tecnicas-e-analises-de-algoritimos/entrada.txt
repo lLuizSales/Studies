@@ -1,7 +1,9 @@
-6
-infiltrar alexandre
-infiltrar leonardo
-infiltrar lucas
-chute
-totem
-chute
+preferencial
+preferencial
+comum
+preferencial
+comum
+preferencial
+preferencial
+comum
+fim
