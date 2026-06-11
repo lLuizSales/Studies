@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oficina Mecânica — Sistema</title>
+  <style>
+    .panel-content { display: none; }
+    .panel-content.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <h1>Oficina Mecânica - Sistema de Gerenciamento</h1>
+
+  <div>
+    <button onclick="trocarAba('login')">Entrar</button>
+    <button onclick="trocarAba('cadastro')">Cadastrar</button>
+  </div>
+  
+  <hr>
+
+  <div id="painel-login" class="panel-content active">
+    <h2>Login</h2>
+    
+    <div>
+      <label for="login-doc">Documento (CPF / CNPJ):</label><br>
+      <input type="text" id="login-doc" placeholder="000.000.000-00">
+    </div>
+    <br>
+    <div>
+      <label for="login-senha">Senha:</label><br>
+      <input type="password" id="login-senha" placeholder="Senha">
+    </div>
+    <br>
+    <button id="btn-login" onclick="fazerLogin()">Entrar no Sistema</button>
+    <div id="msg-login" style="display: none; margin-top: 10px; font-weight: bold;"></div>
+  </div>
+
+  <div id="painel-cadastro" class="panel-content">
+    <h2>Cadastro de Usuário</h2>
+    <p><em>O cadastro requer autenticação de Administrador.</em></p>
+
+    <h3>Dados do Administrador</h3>
+    <div>
+      <label for="adm-doc">Documento do Administrador:</label><br>
+      <input type="text" id="adm-doc">
+    </div>
+    <br>
+    <div>
+      <label for="adm-senha">Senha do Administrador:</label><br>
+      <input type="password" id="adm-senha">
+    </div>
+
+    <hr>
+    
+    <h3>Novo Usuário</h3>
+    <div>
+      <label for="cad-nome">Nome completo:</label><br>
+      <input type="text" id="cad-nome">
+    </div>
+    <br>
+    <div>
+      <label for="cad-doc">Documento (CPF / CNPJ):</label><br>
+      <input type="text" id="cad-doc">
+    </div>
+    <br>
+    <div>
+      <label for="cad-perfil">Perfil de acesso:</label><br>
+      <select id="cad-perfil">
+        <option value="">Selecione o perfil...</option>
+        <option value="administrador">Administrador</option>
+        <option value="gerencia">Gerência</option>
+        <option value="usuario">Usuário Comum</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <label for="cad-senha">Senha do novo usuário:</label><br>
+      <input type="password" id="cad-senha" placeholder="Mínimo 6 caracteres">
+    </div>
+    <br>
+    <button id="btn-cadastrar" onclick="fazerCadastro()">Cadastrar Usuário</button>
+    <div id="msg-cadastro" style="display: none; margin-top: 10px; font-weight: bold;"></div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
