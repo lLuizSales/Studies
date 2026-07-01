@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VLibras</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: #EEF2FF; }
+      [vw] {
+        position: fixed !important;
+        top: 0 !important; left: 0 !important;
+        right: 0 !important; bottom: 0 !important;
+        transform: none !important;
+        width: 100% !important; height: 100% !important;
+      }
+      [vw-access-button] { display: none !important; }
+      [vw] [vw-plugin-wrapper] {
+        position: fixed !important;
+        top: 0 !important; left: 0 !important;
+        width: 100% !important; height: 100% !important;
+        float: none !important; border-radius: 0 !important;
+      }
+      [vp] .vpw-box, [vp] .vpw-controls { border-radius: 0 !important; }
+
+      /* Esconde sidebar lateral do VLibras */
+      .vpw-settings-btn-wrapper,
+      .vpw-settings-btn,
+      [class*="vpw-settings-btn"],
+      .vw-plugin-top-wrapper > *,
+      [vw-plugin-top-wrapper] > * { display: none !important; }
+      #vlibras-target {
+        position: fixed; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        color: transparent; pointer-events: all;
+        user-select: text; font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="vlibras-target"> </span>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+      function tryClick() {
+        const btn = document.querySelector("[vw-access-button]");
+        if (btn) btn.click();
+        else setTimeout(tryClick, 200);
+      }
+      setTimeout(tryClick, 500);
+
+      // Esconde sidebar após o VLibras carregar
+      function hideSidebar() {
+        // Pega todos os filhos diretos do plugin-top-wrapper e esconde
+        const wrapper = document.querySelector('.vw-plugin-top-wrapper');
+        if (wrapper) {
+          wrapper.style.display = 'none';
+        }
+        // Tenta esconder botoes flutuantes
+        document.querySelectorAll('[class*="vpw-btn"], [class*="vpw-settings"], [class*="vpw-sidebar"]').forEach(el => {
+          el.style.display = 'none';
+        });
+      }
+      setTimeout(hideSidebar, 2000);
+      setTimeout(hideSidebar, 4000);
+    </script>
+
+    <script>
+      const ws = new WebSocket("ws://localhost:8766");
+      const queue = [];
+
+      function isAnimating() {
+        const controls = document.querySelector("[vp-controls]");
+        if (!controls) return false;
+        return !controls.classList.contains("vpw-stopped");
+      }
+
+      function processQueue() {
+        if (queue.length === 0 || isAnimating()) return;
+        const text = queue.shift();
+        const el = document.getElementById("vlibras-target");
+        el.textContent = text;
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+      }
+
+      const observer = new MutationObserver(() => {
+        if (!isAnimating() && queue.length > 0) setTimeout(processQueue, 300);
+      });
+
+      function startObserver() {
+        const controls = document.querySelector("[vp-controls]");
+        if (controls) {
+          observer.observe(controls, { attributes: true, attributeFilter: ["class"] });
+        } else {
+          setTimeout(startObserver, 500);
+        }
+      }
+      setTimeout(startObserver, 2000);
+
+      setInterval(() => {
+        if (!isAnimating() && queue.length > 0) processQueue();
+      }, 1000);
+
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (!data.text) return;
+        queue.push(data.text);
+        processQueue();
+      };
+    </script>
+  </body>
+</html>

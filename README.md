@@ -12,6 +12,8 @@ Aqui você encontrará atividades desenvolvidas ao longo da graduação em Engen
 - Python
 - SQL
 - C
+- C++
+- Java
 ---
 - `faculdade/` → Atividades e trabalhos realizados nas disciplinas do curso.  
 - `estudos-pessoais/` → Projetos e exercícios criados para reforçar ou explorar novos conteúdos.
